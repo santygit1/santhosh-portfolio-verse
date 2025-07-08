@@ -12,6 +12,10 @@ const HeroSection = () => {
     <section id="home" className="min-h-screen flex items-center justify-center bg-background transition-colors">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="space-y-8">
+          <p className={`text-lg text-dark-grey dark:text-muted-foreground ${animated ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
+            Welcome to my Portfolio
+          </p>
+          
           <h1 className={`text-5xl md:text-7xl font-bold text-modern-text dark:text-foreground ${animated ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
             Santhosh Kumar
           </h1>
