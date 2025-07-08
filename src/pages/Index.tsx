@@ -1,37 +1,29 @@
 
 import { useEffect } from 'react';
-import Navbar from '../components/Navbar';
-import Hero from '../components/Hero';
-import About from '../components/About';
-import Experience from '../components/Experience';
-import Skills from '../components/Skills';
-import Education from '../components/Education';
-import Projects from '../components/Projects';
-import Contact from '../components/Contact';
-import Footer from '../components/Footer';
-import ScrollToTop from '../components/ScrollToTop';
-import useScrollAnimations from '../hooks/useScrollAnimations';
+import { ThemeProvider } from '../contexts/ThemeContext';
+import Header from '../components/Header';
+import HeroSection from '../components/HeroSection';
+import AboutSection from '../components/AboutSection';
+import TechnologiesSection from '../components/TechnologiesSection';
+import ContactSection from '../components/ContactSection';
+import FooterSection from '../components/FooterSection';
 
 const Index = () => {
-  useScrollAnimations();
-  
   useEffect(() => {
     document.title = "Santhosh Kumar - Portfolio";
   }, []);
   
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
-      <Hero />
-      <About />
-      <Experience />
-      <Skills />
-      <Education />
-      <Projects />
-      <Contact />
-      <Footer />
-      <ScrollToTop />
-    </div>
+    <ThemeProvider>
+      <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors">
+        <Header />
+        <HeroSection />
+        <AboutSection />
+        <TechnologiesSection />
+        <ContactSection />
+        <FooterSection />
+      </div>
+    </ThemeProvider>
   );
 };
 
