@@ -29,9 +29,14 @@ const Header = () => {
       scrolled ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm' : 'bg-transparent'
     }`}>
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
-        <a href="#home" className="text-xl font-bold text-gray-900 dark:text-white">
-          Santhosh Kumar
-        </a>
+        <div className="flex flex-col">
+          <span className="text-xs text-gray-600 dark:text-gray-400 font-medium">
+            Welcome to my Portfolio
+          </span>
+          <a href="#home" className="text-xl font-bold text-gray-900 dark:text-white">
+            Santhosh Kumar
+          </a>
+        </div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">

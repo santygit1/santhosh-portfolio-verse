@@ -1,5 +1,4 @@
 
-import { ArrowRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const HeroSection = () => {
@@ -25,10 +24,9 @@ const HeroSection = () => {
         <div className={`mt-16 ${animated ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.6s' }}>
           <a 
             href="#about" 
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
           >
             Let's Go
-            <ArrowRight className="w-5 h-5" />
           </a>
         </div>
       </div>

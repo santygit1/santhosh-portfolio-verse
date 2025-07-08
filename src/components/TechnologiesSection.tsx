@@ -31,7 +31,11 @@ const TechnologiesSection = () => {
         { name: "Notion", icon: "📝" },
         { name: "Excel", icon: "📊" },
         { name: "Business Model Canvas", icon: "📈" },
-        { name: "Google Analytics", icon: "📊" }
+        { name: "Google Analytics", icon: "📊" },
+        { name: "Asana", icon: "✅" },
+        { name: "Amplitude", icon: "📈" },
+        { name: "Slack", icon: "💬" },
+        { name: "SurveyMonkey", icon: "🐵" }
       ]
     },
     {
@@ -46,7 +50,9 @@ const TechnologiesSection = () => {
         { name: "WordPress", icon: "📝" },
         { name: "Bolt", icon: "⚡" },
         { name: "Meta Ads", icon: "📱" },
-        { name: "AI Tools", icon: "🤖" }
+        { name: "AI Tools", icon: "🤖" },
+        { name: "Mailchimp", icon: "📧" },
+        { name: "Zapier", icon: "⚡" }
       ]
     }
   ];
@@ -192,7 +198,6 @@ const TechnologiesSection = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-modern-text dark:text-foreground mb-6">Tools & Technologies</h2>
-          <div className="w-20 h-1 bg-primary mx-auto mb-8"></div>
           <p className="text-lg text-dark-grey dark:text-muted-foreground max-w-2xl mx-auto">
             A look at the technologies, tools and platforms I work with.
           </p>
