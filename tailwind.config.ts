@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -67,9 +66,15 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom colors for the portfolio
-				modernBlue: '#007ACC',
-				warmCoral: '#FF6F61',
+				// Custom portfolio colors
+				'electric-teal': 'hsl(174, 100%, 40%)',
+				'sunset-coral': 'hsl(16, 90%, 65%)',
+				'soft-beige': 'hsl(45, 25%, 95%)',
+				'light-sand': 'hsl(42, 33%, 93%)',
+				'cosmic-blue': 'hsl(220, 50%, 15%)',
+				'deep-purple': 'hsl(260, 45%, 12%)',
+				'dark-grey': 'hsl(210, 10%, 25%)',
+				'modern-text': 'hsl(210, 15%, 20%)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
