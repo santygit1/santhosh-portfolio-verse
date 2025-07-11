@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { ExternalLink, Award, Star } from 'lucide-react';
 import { Badge } from './ui/badge';
@@ -20,8 +19,8 @@ const projectsData = [
     id: 2,
     title: "Product Management",
     description: "Led product strategy and journey mapping for a luxury air mobility app.",
-    outcome: "Designed a high-fidelity Figma prototype for luxury jet booking, focusing on clarity, accessibility and elegant UX. The project scored high for clarity, innovation, and storytelling.",
-    tags: ["Product Strategy", "UX/UI", "Figma"],
+    outcome: "Designed a high-fidelity Figma prototype for luxury jet booking, focusing on clarity, accessibility and elegant UX. The project scored high for clarity, innovation and storytelling.",
+    tags: ["Edtech", "Product Research", "PMF"],
     link: "https://www.canva.com/design/DAGsULRY65g/XfR-JCfdinGYaESTRNouBQ/view",
     iframe: "https://www.canva.com/design/DAGsULRY65g/XfR-JCfdinGYaESTRNouBQ/view?embed",
     highlight: false
