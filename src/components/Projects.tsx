@@ -29,9 +29,9 @@ const projectsData = [
   {
     id: 3,
     title: "Capstone Project",
-    description: "Built a blogging platform using Node.js, Express.js and MongoDB, supporting queries by tags, title and author.",
-    outcome: "Created a real-time comment system using Socket.io with nested replies, upvote and downvote functionality.",
-    tags: ["Node.js", "MongoDB", "Socket.io", "Live Demo"],
+    description: "Conducted an entrepreneurial study by mapping the journey of a growth-stage founder at ZenVerse through interviews and research. Explored founder mindset, startup strategy and early-stage storytelling.",
+    outcome: "Gained firsthand insights into real-world venture building and team-driven research execution. Strengthened understanding of startup growth patterns and strategic decision-making.",
+    tags: ["Entrepreneurship", "Startup Research", "Founder Mindset"],
     link: "https://www.canva.com/design/DAGsp8CGAio/gj6nHSsKxxzvKNwza7BD2g/view",
     iframe: "https://www.canva.com/design/DAGsp8CGAio/gj6nHSsKxxzvKNwza7BD2g/view?embed",
     highlight: false
@@ -63,8 +63,9 @@ const projectsData = [
     outcome: "Secured 2nd prize for presenting actionable retail improvements grounded in market trends and consumer profiling. The strategy aligned product placement with behavior-driven recommendations.",
     tags: ["Retail Strategy", "Consumer Behavior", "Data-Driven Insights"],
     link: "https://gamma.app/docs/Tryst-Gourmet-Retail-focuses-on-premium-food-products-experience-8p8soefeasiujsf?mode=present#card-nv8rcqgwph85e8j",
-    iframe: "https://gamma.app/docs/Tryst-Gourmet-Retail-focuses-on-premium-food-products-experience-8p8soefeasiujsf?mode=present#card-nv8rcqgwph85e8j",
-    highlight: false
+    iframe: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    highlight: false,
+    isImage: true
   }
 ];
 
@@ -129,13 +130,22 @@ const Projects = () => {
               
               <CardHeader className="pb-4">
                 <div className="aspect-video bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden mb-4">
-                  <iframe 
-                    src={project.iframe}
-                    className="w-full h-full border-0"
-                    title={project.title}
-                    loading="lazy"
-                    allow="fullscreen"
-                  />
+                  {project.isImage ? (
+                    <img 
+                      src={project.iframe}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <iframe 
+                      src={project.iframe}
+                      className="w-full h-full border-0"
+                      title={project.title}
+                      loading="lazy"
+                      allow="fullscreen"
+                    />
+                  )}
                 </div>
                 
                 <CardTitle className="text-xl font-bold text-modern-text dark:text-foreground group-hover:text-primary transition-colors">
