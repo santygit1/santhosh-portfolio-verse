@@ -1,193 +1,193 @@
 
 import { useState, useEffect, useRef } from 'react';
-import { Star, Award } from 'lucide-react';
+import { ExternalLink, Award, Star } from 'lucide-react';
+import { Badge } from './ui/badge';
+import { Button } from './ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 
 const projectsData = [
   {
-    title: "ECOVO",
-    category: "Entrepreneurship",
-    description: "Co-founding an EV-focused startup, leading content strategy and brand positioning to drive engagement and optimize business messaging.",
-    highlight: true,
+    id: 1,
+    title: "ElBuddy - Elder Care wellness & Business plan",
+    description: "Analyzed the elder care industry across Japan and India, focusing on market trends, user behavior and service gaps. Explored the rise of nuclear families, smartphone adoption and the growing demand for home healthcare.",
+    outcome: "Identified unmet needs in home care services and challenges in caregiver accessibility and lead generation. Provided strategic insights into targeting tech-savvy urban seniors and redefining customer acquisition models.",
+    tags: ["Market Research", "Healthcare Strategy", "Business Plan"],
+    link: "https://www.canva.com/design/DAGsCACu-AE/EV3zzghFmbiIGaeZ0m0DcQ/view",
+    iframe: "https://www.canva.com/design/DAGsCACu-AE/EV3zzghFmbiIGaeZ0m0DcQ/view?embed",
+    highlight: true
   },
   {
-    title: "Retail Immersion",
-    category: "Business Analysis",
-    description: "Analyzed cost and strategies for a retail store in a mall, leading the team to secure a prize. Demonstrated strong analytical skills and enthusiasm for real-world business challenges.",
+    id: 2,
+    title: "Product Management",
+    description: "Led product strategy and journey mapping for a luxury air mobility app.",
+    outcome: "Designed a high-fidelity Figma prototype for luxury jet booking, focusing on clarity, accessibility and elegant UX. The project scored high for clarity, innovation, and storytelling.",
+    tags: ["Product Strategy", "UX/UI", "Figma"],
+    link: "https://www.canva.com/design/DAGsULRY65g/XfR-JCfdinGYaESTRNouBQ/view",
+    iframe: "https://www.canva.com/design/DAGsULRY65g/XfR-JCfdinGYaESTRNouBQ/view?embed",
+    highlight: false
   },
   {
-    title: "Eldercare Industry Analysis",
-    category: "Market Research",
-    description: "Explored market trends and opportunities in the eldercare sector, presenting insights to guide business strategies effectively."
-  },
-  {
-    title: "SDG Hackathon",
-    category: "Innovation",
-    description: "Co-created an organic, sustainable perfume with an affordable pricing model, emphasizing product innovation and sustainability."
-  },
-  {
-    title: "Design Thinking Project",
-    category: "UX Analysis",
-    description: "Analyzed pain points in a mall environment and proposed actionable solutions, highlighting user-centric thinking and analytical skills."
-  },
-  {
+    id: 3,
     title: "Capstone Project",
-    category: "Finance",
-    description: "Developed business and financial strategies focusing on wealth management, enhancing skills in financial analysis and strategic planning."
-  }
-];
-
-const extraCurricular = [
-  {
-    category: "Competitions",
-    items: [
-      "Connection competition (Rotaract club & MNM Jain engineering college): Secured second place",
-      "Chinmaya Geeta chanting competition: Participated actively",
-      "English recitation: Achieved third prize",
-      "Thirukkural recitation: Secured second prize by reciting 100 thirukkurals non-stop",
-      "Bible verse competition: Achieved 1st place twice and 2nd place once"
-    ]
+    description: "Built a blogging platform using Node.js, Express.js and MongoDB, supporting queries by tags, title and author.",
+    outcome: "Created a real-time comment system using Socket.io with nested replies, upvote and downvote functionality.",
+    tags: ["Node.js", "MongoDB", "Socket.io", "Live Demo"],
+    link: "https://www.canva.com/design/DAGsp8CGAio/gj6nHSsKxxzvKNwza7BD2g/view",
+    iframe: "https://www.canva.com/design/DAGsp8CGAio/gj6nHSsKxxzvKNwza7BD2g/view?embed",
+    highlight: false
   },
   {
-    category: "Volunteer Work",
-    items: [
-      "International day against drug abuse and illicit trafficking: Participated in awareness programs"
-    ]
+    id: 4,
+    title: "Intella Education",
+    description: "Collaborated as part of a 7-member team to design and develop Intella Education's official website using HTML, CSS, JavaScript and React.",
+    outcome: "Delivered a live, production-ready platform that enhanced brand visibility and improved user engagement.",
+    tags: ["Live Project", "Website", "Frontend Development"],
+    link: "https://www.intellaeducation.com/",
+    iframe: "https://www.intellaeducation.com/",
+    highlight: true
   },
   {
-    category: "Sports",
-    items: [
-      "Kho-kho (annual sports meet): Achieved runner's up position"
-    ]
+    id: 5,
+    title: "Cybersecurity Startup",
+    description: "Developed a business plan for a quantum-resilient cybersecurity startup tackling future encryption threats. Focused on AI-enhanced quantum encryption solutions tailored for SMEs and cloud deployment.",
+    outcome: "Delivered a winning pitch that outlined market gaps, user risks and a go-to-market strategy for affordable post-quantum encryption. Positioned the solution against high-cost competitors like IBM and ID Quantique.",
+    tags: ["Post Quantum Cryptography", "CyberSecurity Startup", "AI driven strategy"],
+    link: "https://www.canva.com/design/DAGsZlKqp88/QG2E6cat0MqrnFCugfztOg/view",
+    iframe: "https://www.canva.com/design/DAGsZlKqp88/QG2E6cat0MqrnFCugfztOg/view?embed",
+    highlight: false
+  },
+  {
+    id: 6,
+    title: "Retail Immersion",
+    description: "Conducted a retail immersion at Tryst & Gourme to analyze customer behavior and store flow. Developed referral and merchandising strategies using data-backed insights and shopper psychology.",
+    outcome: "Secured 2nd prize for presenting actionable retail improvements grounded in market trends and consumer profiling. The strategy aligned product placement with behavior-driven recommendations.",
+    tags: ["Retail Strategy", "Consumer Behavior", "Data-Driven Insights"],
+    link: "https://gamma.app/docs/Tryst-Gourmet-Retail-focuses-on-premium-food-products-experience-8p8soefeasiujsf?mode=present#card-nv8rcqgwph85e8j",
+    iframe: "https://gamma.app/docs/Tryst-Gourmet-Retail-focuses-on-premium-food-products-experience-8p8soefeasiujsf?mode=present#card-nv8rcqgwph85e8j",
+    highlight: false
   }
 ];
 
 const Projects = () => {
   const [visibleProjects, setVisibleProjects] = useState<number[]>([]);
-  const [visibleExtra, setVisibleExtra] = useState(false);
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const extraRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
-    const projectObserver = new IntersectionObserver(
+    const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const index = projectRefs.current.findIndex(ref => ref === entry.target);
             if (index !== -1) {
-              setVisibleProjects(prev => [...prev, index]);
+              setVisibleProjects(prev => [...new Set([...prev, index])]);
             }
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -100px 0px' }
-    );
-    
-    const extraObserver = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisibleExtra(true);
-          extraObserver.disconnect();
-        }
-      },
-      { threshold: 0.1 }
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     );
     
     projectRefs.current.forEach((ref) => {
-      if (ref) projectObserver.observe(ref);
+      if (ref) observer.observe(ref);
     });
     
-    if (extraRef.current) {
-      extraObserver.observe(extraRef.current);
-    }
-    
-    return () => {
-      projectObserver.disconnect();
-      extraObserver.disconnect();
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section id="projects" className="section bg-gray-50">
+    <section id="projects" className="section bg-gray-50 dark:bg-gray-900">
       <div className="container-custom">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Projects & Activities</h2>
-          <div className="w-20 h-1 bg-warmCoral mx-auto mb-6"></div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            My key projects, achievements, and extracurricular activities that showcase my skills and interests.
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-modern-text dark:text-foreground">
+            My Work & Projects
+          </h2>
+          <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
+          <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
+            A collection of projects that demonstrate my ability to build, collaborate and solve problems through thoughtful execution.
           </p>
         </div>
         
-        <h3 className="text-xl font-bold mb-8 flex items-center">
-          <Star className="mr-2 text-modernBlue" />
-          <span>Notable Projects & Achievements</span>
-        </h3>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div className="grid lg:grid-cols-2 gap-8">
           {projectsData.map((project, index) => (
-            <div 
-              key={index}
+            <Card 
+              key={project.id}
               ref={el => projectRefs.current[index] = el}
-              className={`card-project ${project.highlight ? 'border-l-4 border-l-warmCoral' : ''} ${
+              className={`group hover:shadow-xl transition-all duration-300 border-0 shadow-md ${
+                project.highlight ? 'ring-2 ring-primary/20' : ''
+              } ${
                 visibleProjects.includes(index) ? 'animate-fade-in opacity-100' : 'opacity-0'
               }`}
               style={{ animationDelay: `${0.1 * index}s` }}
             >
-              <div className="p-6">
-                <span className="text-xs font-semibold text-modernBlue bg-blue-50 px-3 py-1 rounded-full">
-                  {project.category}
-                </span>
-                <h4 className="font-bold text-lg mt-2">{project.title}</h4>
-                <p className="text-gray-600 mt-2 text-sm">
+              {project.highlight && (
+                <div className="absolute -top-3 -right-3 z-10">
+                  <div className="bg-primary text-primary-foreground rounded-full p-2">
+                    <Star className="w-4 h-4" />
+                  </div>
+                </div>
+              )}
+              
+              <CardHeader className="pb-4">
+                <div className="aspect-video bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden mb-4">
+                  <iframe 
+                    src={project.iframe}
+                    className="w-full h-full border-0"
+                    title={project.title}
+                    loading="lazy"
+                    allow="fullscreen"
+                  />
+                </div>
+                
+                <CardTitle className="text-xl font-bold text-modern-text dark:text-foreground group-hover:text-primary transition-colors">
+                  {project.title}
+                </CardTitle>
+              </CardHeader>
+              
+              <CardContent className="space-y-4">
+                <p className="text-muted-foreground text-sm leading-relaxed">
                   {project.description}
                 </p>
-              </div>
-            </div>
-          ))}
-        </div>
-        
-        <div ref={extraRef} className={`transition-all duration-700 ${visibleExtra ? 'opacity-100 animate-fade-in' : 'opacity-0'}`}>
-          <h3 className="text-xl font-bold mb-8 flex items-center">
-            <Award className="mr-2 text-modernBlue" />
-            <span>Extracurricular Activities</span>
-          </h3>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {extraCurricular.map((category, index) => (
-              <div key={index} className="bg-white rounded-xl shadow p-6">
-                <h4 className="font-semibold text-lg text-modernBlue mb-4">{category.category}</h4>
-                <ul className="space-y-3">
-                  {category.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="text-gray-600 text-sm flex">
-                      <span className="text-warmCoral mr-2">•</span>
-                      <span>{item}</span>
-                    </li>
+                
+                <div className="bg-primary/5 dark:bg-primary/10 rounded-lg p-3">
+                  <h4 className="text-sm font-semibold text-primary mb-1 flex items-center">
+                    <Award className="w-4 h-4 mr-1" />
+                    Outcome
+                  </h4>
+                  <p className="text-sm text-muted-foreground">
+                    {project.outcome}
+                  </p>
+                </div>
+                
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag, tagIndex) => (
+                    <Badge 
+                      key={tagIndex}
+                      variant="secondary"
+                      className="text-xs font-medium"
+                    >
+                      {tag}
+                    </Badge>
                   ))}
-                </ul>
-              </div>
-            ))}
-            
-            <div className="bg-white rounded-xl shadow p-6">
-              <h4 className="font-semibold text-lg text-modernBlue mb-4">Hobbies & Interests</h4>
-              
-              <div className="mb-4">
-                <p className="text-sm font-medium text-gray-700">Interests</p>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  <span className="px-3 py-1 bg-blue-50 text-modernBlue rounded-full text-xs">AI Enthusiast</span>
-                  <span className="px-3 py-1 bg-blue-50 text-modernBlue rounded-full text-xs">Investigation & Analysis</span>
-                  <span className="px-3 py-1 bg-blue-50 text-modernBlue rounded-full text-xs">Music Direction</span>
                 </div>
-              </div>
-              
-              <div>
-                <p className="text-sm font-medium text-gray-700">Hobbies</p>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  <span className="px-3 py-1 bg-gray-100 rounded-full text-xs">Cricket</span>
-                  <span className="px-3 py-1 bg-gray-100 rounded-full text-xs">Watching Movies</span>
-                  <span className="px-3 py-1 bg-gray-100 rounded-full text-xs">Listening to Music</span>
-                </div>
-              </div>
-            </div>
-          </div>
+                
+                <Button 
+                  asChild 
+                  className="w-full mt-4 group-hover:scale-[1.02] transition-transform"
+                  variant="outline"
+                >
+                  <a 
+                    href={project.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center"
+                  >
+                    View Project
+                    <ExternalLink className="w-4 h-4 ml-2" />
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>

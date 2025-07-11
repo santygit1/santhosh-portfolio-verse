@@ -4,6 +4,7 @@ import { ThemeProvider } from '../contexts/ThemeContext';
 import Header from '../components/Header';
 import HeroSection from '../components/HeroSection';
 import AboutSection from '../components/AboutSection';
+import Projects from '../components/Projects';
 import TechnologiesSection from '../components/TechnologiesSection';
 import ContactSection from '../components/ContactSection';
 import FooterSection from '../components/FooterSection';
@@ -19,6 +20,7 @@ const Index = () => {
         <Header />
         <HeroSection />
         <AboutSection />
+        <Projects />
         <TechnologiesSection />
         <ContactSection />
         <FooterSection />
